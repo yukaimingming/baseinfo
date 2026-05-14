@@ -27,14 +27,27 @@ import io.swagger.annotations.ApiOperation;
 public class InfoConstroller {
 
     // 自动注入
-    @Autowired
+    // @Autowired
+    // private IBaseinfoService baseinfoService;
+
+    // @Autowired
+    // private IGydepartmentService departmentService;
+
+    // @Autowired
+    // private ObjectMapper objectMapper;
     private IBaseinfoService baseinfoService;
-
-    @Autowired
     private IGydepartmentService departmentService;
-
-    @Autowired
     private ObjectMapper objectMapper;
+
+    // Spring Boot 下，单构造器可以省略 @Autowired
+    public InfoConstroller(IBaseinfoService baseinfoService,
+            IGydepartmentService departmentService,
+            ObjectMapper objectMapper) {
+        this.baseinfoService = baseinfoService;
+        this.departmentService = departmentService;
+        this.objectMapper = objectMapper;
+    }
+
     private Log log = LogFactory.getLog(getClass());
 
     // 获取人员基本信息
